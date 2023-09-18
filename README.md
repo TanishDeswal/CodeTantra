@@ -1,4 +1,4 @@
 # CodeTantra
 CodeTantra code here!!!!
 
-author = Tanish Deswal
+Author --> Tanish Deswal
