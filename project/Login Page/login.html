@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="login_css.css">
+    <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
+    <title>Document</title>
+</head>
+<body>
+    <div class="container">
+        <div class="cloud"></div>
+    </div>
+    <div class="inputBox">
+        <input type="text" required="required">
+        <span> First Name</span>
+    </div>
+    <div class="inputBox">
+        <input type="text" required="required">
+        <span> Last Name</span>
+    </div>
+    <div class="inputBox">
+        <input type="email" required="required">
+        <span> Email ID</span>
+    </div>
+    <div class="inputBox">
+        <input type="password" required id="password">
+        <span>Password</span>
+        <div id="toggle" onclick="showHide();"></div>
+    </div>
+    <div class="inputBox">
+        <input type="password" required id="password">
+        <span>Re-Password</span>
+        <div id="toggle" onclick="showHide();"></div>
+    </div>
+
+    <script>
+        let password = document.getElementById('password');
+        let togglePassword = document.getElementById('toggle');
+
+        function showHide(){
+            if(password.type === 'password') {
+                password.setAttribute('type','text');
+                togglePassword.classList.add('hide');
+            }
+            else{
+                password.setAttribute('type','password')
+                togglePassword.classList.remove('hide');
+            }
+        }
+
+        function randomText(){
+            var text = ("Ξ₿");
+            letter = text[Math.floor(Math.random() * text.length)];
+            return letter;
+        }
+
+        function rain(){
+            let cloud = document.querySelector('.cloud');
+            let e = document.createElement('div');
+            let left = Math.floor(Math.random()* 310)
+            let size = Math.random() * 1.5;
+            let duration = Math.random() * 1;
+            
+            e.classList.add('text');
+            cloud.appendChild(e);
+            e.innerText = randomText()
+            e.style.left = left + 'px'
+            e.style.fontSize = 0.5+size+'em';
+            e.style.animationDuration = 1+duration +'s';
+
+            setInterval(function(){
+                cloud.removeChild(e)
+            },2000)
+        }
+
+        setInterval(function(){
+            rain()
+        },20);
+    </script>
+</body>
+</html>
